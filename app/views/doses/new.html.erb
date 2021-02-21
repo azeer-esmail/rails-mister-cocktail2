@@ -1,5 +1,7 @@
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :description %>
-  <%= f.input :ingredient, collection: Ingredient.all, input_html: { multiple: true, class: 'multiple-select'}, as: :check_boxes, include_hidden: false %>
-  <%= f.submit "Submit" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= f.input :description %>
+    <%= f.input :ingredient, collection: Ingredient.all, input_html: { multiple: true, class: 'multiple-select'}, as: :check_boxes, include_hidden: false %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>

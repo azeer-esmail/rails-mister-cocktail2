@@ -1,5 +1,11 @@
-<ul>
-<% @cocktails.each do |cocktail| %>
-<li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+    <% str = cl_image_tag cocktail.photos.first.key, height: 300, width: 400, crop: :fill %>
+    <% str = str.split('src=')[1][0...-3] %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= "#{str}" %>)">
+    <%= link_to cocktail.name, cocktail_path(cocktail), class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
