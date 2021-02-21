@@ -1,4 +1,10 @@
 <h1><%= @cocktail.name %></h1>
+<% if @cocktail.photos.attached? %>
+  <% @cocktail.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
+<br>
 <%= link_to "Edit", edit_cocktail_path(@cocktail) %> |
 <%= link_to "Delete", cocktail_path(@cocktail), method: :delete, data: {confirm: "Are you sure?"} %> |
 <%= link_to "Back to cocktails", cocktails_path %>

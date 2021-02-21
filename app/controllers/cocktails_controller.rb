@@ -33,6 +33,7 @@ class CocktailsController < ApplicationController
   end
   
   def destroy
+    @cocktail.photos.purge
     @cocktail.destroy
     redirect_to cocktails_path
   end
@@ -40,7 +41,7 @@ class CocktailsController < ApplicationController
   private
   
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, photos: [])
   end
 
   def set_cocktail
